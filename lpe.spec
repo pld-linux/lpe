@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/lpe
 %dir %{_libdir}/lpe
 %attr(755,root,root) %{_libdir}/lpe/*.so
-%attr(755,root,root) %{_libdir}/lpe/*.la
+%{_libdir}/lpe/*.la
 %{_datadir}/lpe
 
 %{_mandir}/man1/lpe*
