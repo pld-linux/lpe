@@ -89,3 +89,16 @@ diff -Nru lpe-1.2.5/src/modes/Makefile.am lpe-1.2.5.new/src/modes/Makefile.am
  
  liblpedir = $(libdir)/lpe
  
+--- lpe-1.2.6/src/Makefile.am~	Sat Mar 23 15:14:35 2002
++++ lpe-1.2.6/src/Makefile.am	Sat Mar 23 15:15:20 2002
+@@ -36,8 +36,7 @@
+ 	strfuncs.c strfuncs.h
+ 
+ 
+-lpe_LDADD = @INTLLIBS@ @INTLOBJS@ @DL_LIB@ @SLANG_LIB@
+-lpe_LDFLAGS = @lpe_LDFLAGS@
+-lpe_DEPENDENCIES = @lpe_DEPS@ @INTLDEPS@
++lpe_LDADD = $(INTLLIBS) $(INTLOBJS) $(DL_LIB) $(SLANG_LIB)
++lpe_LDFLAGS = -export-dynamic
+ 
+ EXTRA_DIST = templ.c templ.h
