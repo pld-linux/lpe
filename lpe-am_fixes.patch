@@ -1,0 +1,91 @@
+diff -Nru lpe-1.2.5/data/Makefile.am lpe-1.2.5.new/data/Makefile.am
+--- lpe-1.2.5/data/Makefile.am	Wed Jul 19 18:49:03 2000
++++ lpe-1.2.5.new/data/Makefile.am	Wed Mar  7 17:42:19 2001
+@@ -1,12 +1,16 @@
+ MAINTAINERCLEANFILES = Makefile.in init.sl init.slc conv.slc
+ 
++DEFS =
++
++INCLUDES = -I$(top_srcdir)
++
+ slang_compiled = init.slc conv.slc
+ slang_sources = $(srcdir)/init.sl $(srcdir)/conv.sl
+ 
+ noinst_PROGRAMS = comp
+ 
+ comp_SOURCES = comp.c
+-comp_LDADD = @SLANG_LIB@
++comp_LDADD = $(SLANG_LIB)
+ 
+ lpe_datadir = $(datadir)/lpe
+ lpe_data_DATA = $(slang_sources) $(slang_compiled)
+diff -Nru lpe-1.2.5/man/Makefile.am lpe-1.2.5.new/man/Makefile.am
+--- lpe-1.2.5/man/Makefile.am	Wed Mar  7 17:44:49 2001
++++ lpe-1.2.5.new/man/Makefile.am	Wed Mar  7 17:31:36 2001
+@@ -15,7 +15,7 @@
+ 
+ install-data-hook:
+ 	for m in $(EXTRA_MANPAGES); do \
+-		$(mkinstalldirs) $(mandir)/`echo $$m | sed -e "s,^.*\.1\.\(.*\)$$,\1/man1,"`; \
++		$(mkinstalldirs) $(DESTDIR)$(mandir)/`echo $$m | sed -e "s,^.*\.1\.\(.*\)$$,\1/man1,"`; \
+ 		$(INSTALL_DATA) $(top_srcdir)/man/$$m \
+-			$(mandir)/`echo $$m | sed -e "s,^\(.*\)\.1\.\(.*\)$$,\2/man1/\1.1,"`; \
++			$(DESTDIR)$(mandir)/`echo $$m | sed -e "s,^\(.*\)\.1\.\(.*\)$$,\2/man1/\1.1,"`; \
+ 	done
+diff -Nru lpe-1.2.5/src/Makefile.am lpe-1.2.5.new/src/Makefile.am
+--- lpe-1.2.5/src/Makefile.am	Wed Mar  7 17:44:49 2001
++++ lpe-1.2.5.new/src/Makefile.am	Wed Mar  7 17:39:11 2001
+@@ -1,7 +1,20 @@
+-MAINTAINERCLEANFILES = Makefile.in
+ 
+ SUBDIRS = modes
+ 
++MAINTAINERCLEANFILES = Makefile.in
++
++DEFS = 	-DDATADIR=\"$(datadir)\" \
++	-DLOCALEDIR=\"$(datadir)/locale\"
++
++if USE_INCLUDED_LIBINTL
++INCLUDES = \
++	-I$(top_srcdir) \
++	-I$(top_srcdir)/intl
++else
++INCLUDES = \
++	-I$(top_srcdir)
++endif
++
+ bin_PROGRAMS = lpe
+ 
+ lpe_SOURCES = \
+@@ -22,16 +35,9 @@
+ 	screen.c screen.h \
+ 	strfuncs.c strfuncs.h
+ 
+-INCLUDES = -DDATADIR=\"$(datadir)\"
+ 
+ lpe_LDADD = @INTLLIBS@ @INTLOBJS@ @DL_LIB@ @SLANG_LIB@
+ lpe_LDFLAGS = @lpe_LDFLAGS@
+ lpe_DEPENDENCIES = @lpe_DEPS@ @INTLDEPS@
+-
+-if USE_INCLUDED_LIBINTL
+-CPPFLAGS += -DLOCALEDIR=\"$(datadir)/@DATADIRNAME@\" -I$(top_srcdir)/intl
+-else
+-CPPFLAGS += -DLOCALEDIR=\"$(datadir)/locale\"
+-endif
+ 
+ EXTRA_DIST = templ.c templ.h
+diff -Nru lpe-1.2.5/src/modes/Makefile.am lpe-1.2.5.new/src/modes/Makefile.am
+--- lpe-1.2.5/src/modes/Makefile.am	Tue Jul 18 19:38:50 2000
++++ lpe-1.2.5.new/src/modes/Makefile.am	Wed Mar  7 17:43:47 2001
+@@ -1,6 +1,10 @@
+ MAINTAINERCLEANFILES = Makefile.in
+ 
+-INCLUDES = -I$(top_srcdir)/src
++DEFS =
++
++INCLUDES = \
++	-I$(top_srcdir) \
++	-I$(top_srcdir)/src
+ 
+ liblpedir = $(libdir)/lpe
+ 
