@@ -30,7 +30,7 @@ LPE jest ma³ym, pe³no ekranowym edytorem przeznaczonym do edycji kodu.
 
 %build
 rm -f missing
-gettextize --copy --force
+%{__gettextize}
 %{__libtoolize}
 aclocal
 %{__autoconf}
