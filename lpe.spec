@@ -8,16 +8,18 @@ Group:		Editors
 Group(pl):	Edytory
 Source0:	http://cdsmith.twu.net/%{name}/%{name}-%{version}.tar.gz
 URL:		http://cdsmith.twu.net/lpe/
-#Patch0:		
-#BuildRequires:	
-#Requires:	
+BuildRequires:	slang-devel >= 1.4.0
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define	_prefix	/usr
 
 %description
+LPE is small, fast, full screen visual text editor designed to make 
+editing code easier.
 
 %description -l pl
+LPE jest ma³ym, pe³no ekranowym edytorem przeznaczonym do edycji 
+kodu.
 
 %prep
 %setup -q
@@ -33,6 +35,11 @@ Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 rm -rf $RPM_BUILD_ROOT
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} mandir=$RPM_BUILD_ROOT%{_mandir} install
 
+gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man*/* \
+	$RPM_BUILD_ROOT%{_mandir}/*/man*/* \
+	AUTHORS BUGS CUSTOMIZE IDEAS MODES NEWS README TODO \
+	ChangeLog
+
 %find_lang %{name}
 
 %clean
@@ -40,8 +47,17 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc
+%doc {AUTHORS,BUGS,ChangeLog,CUSTOMIZE,IDEAS,MODES,NEWS,README,TODO}.gz data/custom.ex
 %attr(755,root,root) %{_bindir}/lpe
 %attr(644,root,root) %{_libdir}/lpe/*.so
 %attr(644,root,root) %{_libdir}/lpe/*.la
 %attr(644,root,root) %{_datadir}/lpe/*
+
+%{_mandir}/man1/lpe*
+%lang(bg) %{_mandir}/bg/man1/lpe*
+%lang(cz) %{_mandir}/cz/man1/lpe*
+%lang(de) %{_mandir}/de/man1/lpe*
+%lang(es) %{_mandir}/es/man1/lpe*
+%lang(fr) %{_mandir}/fr/man1/lpe*
+%lang(pl) %{_mandir}/pl/man1/lpe*
+%lang(ru) %{_mandir}/ru/man1/lpe*
