@@ -1,16 +1,17 @@
 Summary:	Lpe - programmer's editor
 Summary(pl):	Lpe - edytor progamisty
 Name:		lpe
-Version:	1.2.5
+Version:	1.2.6
 Release:	1
 License:	GPL
 Group:		Applications/Editors
-Source0:	http://cdsmith.twu.net/%{name}/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.twu.net/users/cdsmith/lpe/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am_fixes.patch
-URL:		http://cdsmith.twu.net/lpe/
+URL:		http://cdsmith.twu.net/professional/opensource/lpe.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
+BuildRequires:	libtool
 BuildRequires:	slang-devel >= 1.4.0
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -28,10 +29,12 @@ LPE jest ma³ym, pe³no ekranowym edytorem przeznaczonym do edycji kodu.
 %patch0 -p1
 
 %build
+rm -f missing
 gettextize --copy --force
+libtoolize --copy --force
 aclocal
 autoconf
-automake -a -c
+automake -a -c -f
 %configure \
     --with-modes=all
 %{__make}
@@ -41,8 +44,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-mv -f $RPM_BUILD_ROOT%{_mandir}/cz $RPM_BUILD_ROOT%{_mandir}/cs
 
 gzip -9nf AUTHORS BUGS CUSTOMIZE IDEAS MODES NEWS README TODO ChangeLog
 
