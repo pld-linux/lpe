@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Applications/Editors
 Source0:	ftp://ftp.twu.net/users/cdsmith/lpe/%{name}-%{version}.tar.gz
+# Source0-md5:	59feaf93bb6b57e8c3b876261b2bcaa3
 Patch0:		%{name}-am_fixes.patch
 URL:		http://cdsmith.twu.net/professional/opensource/lpe.html
 BuildRequires:	autoconf
