@@ -5,9 +5,6 @@ Version:	1.2.5
 Release:	1
 License:	GPL
 Group:		Applications/Editors
-Group(de):	Applikationen/Editors
-Group(pl):	Aplikacje/Edytory
-Group(pt):	Aplicações/Editores
 Source0:	http://cdsmith.twu.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		%{name}-am_fixes.patch
 URL:		http://cdsmith.twu.net/lpe/
