@@ -45,8 +45,6 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-gzip -9nf AUTHORS BUGS CUSTOMIZE IDEAS MODES NEWS README TODO ChangeLog
-
 %find_lang %{name}
 
 %clean
@@ -54,7 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc *.gz data/custom.ex
+%doc AUTHORS BUGS CUSTOMIZE IDEAS MODES NEWS README TODO ChangeLog data/custom.ex
 %attr(755,root,root) %{_bindir}/lpe
 %dir %{_libdir}/lpe
 %attr(755,root,root) %{_libdir}/lpe/*.so
