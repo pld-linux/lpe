@@ -4,8 +4,8 @@ Name:		lpe
 Version:	1.2.5
 Release:	1
 Copyright:	GPL
-Group:		Editors
-Group(pl):	Edytory
+Group:		Applications/Editors
+Group(pl):	Aplikacje/Edytory
 Source0:	http://cdsmith.twu.net/%{name}/%{name}-%{version}.tar.gz
 URL:		http://cdsmith.twu.net/lpe/
 BuildRequires:	slang-devel >= 1.4.0
