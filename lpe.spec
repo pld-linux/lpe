@@ -35,7 +35,7 @@ kodu.
 rm -rf $RPM_BUILD_ROOT
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} mandir=$RPM_BUILD_ROOT%{_mandir} install
 
-mv -f %{_mandir}/cz %{_mandir}/cs
+mv -f $RPM_BUILD_ROOT%{_mandir}/cz $RPM_BUILD_ROOT%{_mandir}/cs
 
 gzip -9nf AUTHORS BUGS CUSTOMIZE IDEAS MODES NEWS README TODO ChangeLog
 
