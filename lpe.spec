@@ -16,8 +16,6 @@ BuildRequires:	libtool
 BuildRequires:	slang-devel >= 1.4.0
 Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define	_prefix	/usr
-
 %description
 LPE is small, fast, full screen visual text editor designed to make
 editing code easier.
