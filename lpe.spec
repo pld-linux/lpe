@@ -14,7 +14,7 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
 BuildRequires:	slang-devel >= 1.4.0
-Buildroot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 LPE is small, fast, full screen visual text editor designed to make
