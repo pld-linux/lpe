@@ -35,10 +35,9 @@ kodu.
 rm -rf $RPM_BUILD_ROOT
 %{__make} prefix=$RPM_BUILD_ROOT%{_prefix} mandir=$RPM_BUILD_ROOT%{_mandir} install
 
-gzip -9fn $RPM_BUILD_ROOT%{_mandir}/man*/* \
-	$RPM_BUILD_ROOT%{_mandir}/*/man*/* \
-	AUTHORS BUGS CUSTOMIZE IDEAS MODES NEWS README TODO \
-	ChangeLog
+mv -f %{_mandir}/cz %{_mandir}/cs
+
+gzip -9nf AUTHORS BUGS CUSTOMIZE IDEAS MODES NEWS README TODO ChangeLog
 
 %find_lang %{name}
 
@@ -55,7 +54,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_mandir}/man1/lpe*
 %lang(bg) %{_mandir}/bg/man1/lpe*
-%lang(cz) %{_mandir}/cz/man1/lpe*
+%lang(cs) %{_mandir}/cs/man1/lpe*
 %lang(de) %{_mandir}/de/man1/lpe*
 %lang(es) %{_mandir}/es/man1/lpe*
 %lang(fr) %{_mandir}/fr/man1/lpe*
