@@ -2,18 +2,19 @@ Summary:	Lpe - programmer's editor
 Summary(pl):	Lpe - edytor progamisty
 Name:		lpe
 Version:	1.2.6
-Release:	2
+Release:	4
 License:	GPL
 Group:		Applications/Editors
 Source0:	ftp://ftp.twu.net/users/cdsmith/lpe/%{name}-%{version}.tar.gz
 # Source0-md5:	59feaf93bb6b57e8c3b876261b2bcaa3
 Patch0:		%{name}-am_fixes.patch
+Patch1:		%{name}-slang.patch
 URL:		http://cdsmith.twu.net/professional/opensource/lpe.html
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	libtool
-BuildRequires:	slang-devel >= 1.4.0
+BuildRequires:	slang-devel >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -26,6 +27,7 @@ LPE jest ma³ym, pe³no ekranowym edytorem przeznaczonym do edycji kodu.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 rm -f missing
