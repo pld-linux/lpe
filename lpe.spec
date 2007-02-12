@@ -1,5 +1,5 @@
 Summary:	Lpe - programmer's editor
-Summary(pl):	Lpe - edytor progamisty
+Summary(pl.UTF-8):   Lpe - edytor progamisty
 Name:		lpe
 Version:	1.2.6
 Release:	4
@@ -21,8 +21,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 LPE is small, fast, full screen visual text editor designed to make
 editing code easier.
 
-%description -l pl
-LPE jest ma≥ym, pe≥no ekranowym edytorem przeznaczonym do edycji kodu.
+%description -l pl.UTF-8
+LPE jest ma≈Çym, pe≈Çno ekranowym edytorem przeznaczonym do edycji kodu.
 
 %prep
 %setup -q
