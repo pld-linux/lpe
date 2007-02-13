@@ -1,5 +1,5 @@
 Summary:	Lpe - programmer's editor
-Summary(pl.UTF-8):   Lpe - edytor progamisty
+Summary(pl.UTF-8):	Lpe - edytor progamisty
 Name:		lpe
 Version:	1.2.6
 Release:	4
