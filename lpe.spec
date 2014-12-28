@@ -12,7 +12,7 @@ Patch1:		%{name}-slang.patch
 URL:		http://cdsmith.twu.net/professional/opensource/lpe.html
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	libtool
 BuildRequires:	slang-devel >= 2.0.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
